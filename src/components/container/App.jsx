@@ -24,7 +24,7 @@ class App extends Component {
   onInputChange = (event) => {
     this.setState({
       number: this.validateNumber(event.target.value) ? event.target.value : '',
-      placeholder: this.checkIfString(event.target.value) ? 'no letters allowed' : "enter your number"
+      placeholder: this.checkIfString(event.target.value) ? 'only numbers allowed' : "enter your number"
     })
   }
 
@@ -37,7 +37,7 @@ class App extends Component {
 
     return (
       <div className='main-container'>
-        <label htmlFor='number' className='main-container_label'>Convert inetger to binary</label>
+        <label htmlFor='number' className='main-container_label'>Convert integer to binary</label>
         <input type="text" onChange={this.onInputChange} value={this.state.number} className='main-container_input'
           placeholder={this.state.placeholder} id='number' />
         <div className='main-container_number-wrapper'>
