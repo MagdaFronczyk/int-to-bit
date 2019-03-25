@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import './App.css';
 import Number from '../number/Number';
+import NumberChanged from '../numberChanged/NumberChanged';
 import { CopyToClipboard } from 'react-copy-html-to-clipboard/lib/Component';
 
 class App extends Component {
@@ -48,19 +49,16 @@ class App extends Component {
 
   render() {
 
-    const { operator, shiftNumber } = this.state;
+    const { operator, shiftNumber, number } = this.state;
 
-    console.log((this.state.number >>> parseInt(shiftNumber)).toString(2));
-
-    const number = (
-      this.state.number !== "" && parseInt(this.state.number).toString(2).split("").map((el, index) =>
+    const numberToBit = (
+      number !== "" && parseInt(number).toString(2).split("").map((el, index) =>
         < Number number={el} key={index} />)
     );
 
     const numberChanged = (
-      (this.state.number !== "" && this.state.operator !== ">>>" && this.state.shiftNumber !== "") &&
-      parseInt(this.state.number).toString(2).split("").map((el, index) =>
-        < p number={el} key={index}>{(this.state.number >>> parseInt(shiftNumber)).toString(2)}</p>)
+      (number !== "" && operator !== "" && shiftNumber !== "") &&
+      < NumberChanged number={number} operator={operator} shiftNumber={shiftNumber} />
     );
 
     return (
@@ -69,8 +67,7 @@ class App extends Component {
         <input type="text" onChange={this.onInputChange} value={this.state.number} className='main-container_input'
           placeholder={this.state.placeholder} id='number' />
         <div className='main-container_number-wrapper'>
-          {number}
-          {numberChanged}
+          {numberToBit}
         </div>
         <CopyToClipboard text={(this.state.number >>> 0).toString(2)}>
           <button className='main-container_copy-button'>Copy</button>
@@ -80,6 +77,7 @@ class App extends Component {
           <button onClick={this.handleShiftChoice} name='>>>'>{`>>>`}</button>
           <button onClick={this.handleShiftChoice} name='<<'>{`<<`}</button>
           <input type="text" onChange={this.onNumberInsert} name='shiftNumber' />
+          {numberChanged}
         </div>
       </div >
     )
