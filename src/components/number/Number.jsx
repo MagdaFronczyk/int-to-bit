@@ -10,7 +10,7 @@ class Number extends Component {
     let color = "#" + ((1 << 24) * Math.random() | 0).toString(16);
 
     return (
-      <p className='number-wrapper_number' style={{ color: `${color}` }}>{(this.props.number >>> 0).toString(2)}</p>
+      <p className='number-wrapper_number' style={{ color: `${color}` }}>{parseInt(this.props.number).toString(2)}</p>
     )
   }
 }

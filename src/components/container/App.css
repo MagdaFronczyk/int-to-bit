@@ -170,3 +170,37 @@ body {
 .main-container_number-wrapper {
     display: flex;
 }
+
+.main-container_copy-button {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    font-family: inherit;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s ease-in-out;
+}
+
+.main-container_copy-button:hover {
+    background-color: grey;
+}
+
+.main-container_copied {
+    padding: 0 10px;
+    animation: disappear 1s normal forwards;
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
