@@ -146,7 +146,7 @@ body {
 .main-container_label {
     display: block;
     padding-bottom: 20px;
-    font-size: 36px;
+    font-size: 48px;
     text-align: center;
 }
 
@@ -171,7 +171,7 @@ body {
     display: flex;
 }
 
-.main-container_copy-button {
+.main-container_button {
     background-color: black;
     border: none;
     color: white;
@@ -182,25 +182,6 @@ body {
     transition: 0.3s ease-in-out;
 }
 
-.main-container_copy-button:hover {
+.main-container_button:hover {
     background-color: grey;
-}
-
-.main-container_copied {
-    padding: 0 10px;
-    animation: disappear 1s normal forwards;
-}
-
-@keyframes disappear {
-    0% {
-        opacity: 0;
-    }
-
-    30% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
 }
