@@ -6,7 +6,7 @@ import './NumberChanged.css'
 
 class NumberChanged extends Component {
     state = {
-        shiftNumber: '',
+        operand: '',
         placeholder: 'enter your number',
         operator: ''
     }
@@ -19,7 +19,7 @@ class NumberChanged extends Component {
         });
     }
 
-    handleShiftChoice = (event) => {
+    handleOperationChoice = (event) => {
         const { name } = event.target;
         this.setState({
             operator: name,
@@ -37,27 +37,36 @@ class NumberChanged extends Component {
     }
 
     render() {
-        const { operator, placeholder, shiftNumber } = this.state;
+        const { operator, placeholder, operand } = this.state;
         const { number } = this.props;
 
         let numberAfterShift;
 
         if (operator === ">>") {
-            numberAfterShift = (<p>{(parseInt(number) >> parseInt(shiftNumber)).toString(2)}</p>);
+            numberAfterShift = (<p>{(parseInt(number) >> parseInt(operand)).toString(2)}</p>);
         } else if (operator === ">>>") {
-            numberAfterShift = (<p>{(parseInt(number) >>> parseInt(shiftNumber)).toString(2)}</p>);
+            numberAfterShift = (<p>{(parseInt(number) >>> parseInt(operand)).toString(2)}</p>);
+        } else if (operator === "&") {
+            numberAfterShift = (<p>{(parseInt(number) & parseInt(operand)).toString(2)}</p>);
+        } else if (operator === "|") {
+            numberAfterShift = (<p>{(parseInt(number) | parseInt(operand)).toString(2)}</p>);
+        } else if (operator === "^") {
+            numberAfterShift = (<p>{(parseInt(number) ^ parseInt(operand)).toString(2)}</p>);
         } else {
-            numberAfterShift = (<p>{(parseInt(number) << parseInt(shiftNumber)).toString(2)}</p>)
+            numberAfterShift = (<p>{(parseInt(number) << parseInt(operand)).toString(2)}</p>)
         }
 
         return (
-            <div className='main-container_changedNumber-wrapper'>
-                <label htmlFor='number' className='main-container_label'>Shift</label>
-                <input type="text" onChange={this.onNumberInsert} name='shiftNumber' value={this.state.shiftNumber} className='main-container_input' placeholder={placeholder} />
-                <button onClick={this.handleShiftChoice} name='>>' className='main-container_button '>{`>>`}</button>
-                <button onClick={this.handleShiftChoice} name='>>>' className='main-container_button'>{`>>>`}</button>
-                <button onClick={this.handleShiftChoice} name='<<' className='main-container_button'>{`<<`}</button>
-                {(operator !== "" && shiftNumber !== "" && number !== "") && numberAfterShift}
+            <div>
+                <label htmlFor='number'>Shift</label>
+                <input type="text" onChange={this.onNumberInsert} name='operand' value={this.state.operand} placeholder={placeholder} />
+                <button onClick={this.handleOperationChoice} name='>>'>{`>>`}</button>
+                <button onClick={this.handleOperationChoice} name='>>>'>{`>>>`}</button>
+                <button onClick={this.handleOperationChoice} name='<<'>{`<<`}</button>
+                <button onClick={this.handleOperationChoice} name='&'>{`&`}</button>
+                <button onClick={this.handleOperationChoice} name='|'>{`|`}</button>
+                <button onClick={this.handleOperationChoice} name='^'>{`^`}</button>
+                {(operator !== "" && operand !== "" && number !== "") && numberAfterShift}
             </div>
         )
     }

@@ -52,14 +52,6 @@ class App extends Component {
         <CopyToClipboard text={(this.state.number >>> 0).toString(2)}>
           <button className='main-container_button'>Copy</button>
         </CopyToClipboard>
-        {/* <div className='main-container_changedNumber-wrapper'>
-          <label htmlFor='number' className='main-container_label'>Shift</label>
-          <input type="text" onChange={this.onNumberInsert} name='shiftNumber' value={this.state.shiftNumber} className='main-container_input' />
-          <button onClick={this.handleShiftChoice} name='>>' className='main-container_button '>{`>>`}</button>
-          <button onClick={this.handleShiftChoice} name='>>>' className='main-container_button'>{`>>>`}</button>
-          <button onClick={this.handleShiftChoice} name='<<' className='main-container_button'>{`<<`}</button>
-          {numberChanged}
-        </div> */}
         <NumberChanged number={this.state.number} />
       </div >
     )
