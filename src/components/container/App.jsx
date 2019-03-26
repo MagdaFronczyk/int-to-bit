@@ -43,15 +43,17 @@ class App extends Component {
 
     return (
       <div className='main-container'>
-        <label htmlFor='number' className='main-container_label'>Convert integer to binary</label>
-        <input type="text" onChange={this.onInputChange} value={this.state.number} className='main-container_input'
-          placeholder={this.state.placeholder} id='number' name='number' />
-        <div className='main-container_number-wrapper'>
-          {numberToBit}
+        <div className='number-to-bit-container'>
+          <label htmlFor='number' className='number-to-bit_label'>Convert integer to binary</label>
+          <input type="text" onChange={this.onInputChange} value={this.state.number} className='number-to-bit_input'
+            placeholder={this.state.placeholder} id='number' name='number' />
+          <div className='number-to-bit_number-wrapper'>
+            {numberToBit}
+          </div>
+          <CopyToClipboard text={(this.state.number >>> 0).toString(2)}>
+            <button className='number-to-bit_button'>Copy</button>
+          </CopyToClipboard>
         </div>
-        <CopyToClipboard text={(this.state.number >>> 0).toString(2)}>
-          <button className='main-container_button'>Copy</button>
-        </CopyToClipboard>
         <NumberChanged number={this.state.number} />
       </div >
     )

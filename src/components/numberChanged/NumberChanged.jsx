@@ -36,37 +36,45 @@ class NumberChanged extends Component {
         return reg.test(input);
     }
 
+    performOperation = (operator, number) => {
+
+    }
+
     render() {
         const { operator, placeholder, operand } = this.state;
         const { number } = this.props;
 
-        let numberAfterShift;
+        let numberAfterOperation;
 
         if (operator === ">>") {
-            numberAfterShift = (<p>{(parseInt(number) >> parseInt(operand)).toString(2)}</p>);
+            numberAfterOperation = (<p className="number-changed_number">{(parseInt(number) >> parseInt(operand)).toString(2)}</p>);
         } else if (operator === ">>>") {
-            numberAfterShift = (<p>{(parseInt(number) >>> parseInt(operand)).toString(2)}</p>);
+            numberAfterOperation = (<p className="number-changed_number">{(parseInt(number) >>> parseInt(operand)).toString(2)}</p>);
         } else if (operator === "&") {
-            numberAfterShift = (<p>{(parseInt(number) & parseInt(operand)).toString(2)}</p>);
+            numberAfterOperation = (<p className="number-changed_number">{(parseInt(number) & parseInt(operand)).toString(2)}</p>);
         } else if (operator === "|") {
-            numberAfterShift = (<p>{(parseInt(number) | parseInt(operand)).toString(2)}</p>);
+            numberAfterOperation = (<p className="number-changed_number">{(parseInt(number) | parseInt(operand)).toString(2)}</p>);
         } else if (operator === "^") {
-            numberAfterShift = (<p>{(parseInt(number) ^ parseInt(operand)).toString(2)}</p>);
+            numberAfterOperation = (<p className="number-changed_number">{(parseInt(number) ^ parseInt(operand)).toString(2)}</p>);
         } else {
-            numberAfterShift = (<p>{(parseInt(number) << parseInt(operand)).toString(2)}</p>)
+            numberAfterOperation = (<p className="number-changed_number">{(parseInt(number) << parseInt(operand)).toString(2)}</p>)
         }
 
         return (
-            <div>
-                <label htmlFor='number'>Shift</label>
-                <input type="text" onChange={this.onNumberInsert} name='operand' value={this.state.operand} placeholder={placeholder} />
-                <button onClick={this.handleOperationChoice} name='>>'>{`>>`}</button>
-                <button onClick={this.handleOperationChoice} name='>>>'>{`>>>`}</button>
-                <button onClick={this.handleOperationChoice} name='<<'>{`<<`}</button>
-                <button onClick={this.handleOperationChoice} name='&'>{`&`}</button>
-                <button onClick={this.handleOperationChoice} name='|'>{`|`}</button>
-                <button onClick={this.handleOperationChoice} name='^'>{`^`}</button>
-                {(operator !== "" && operand !== "" && number !== "") && numberAfterShift}
+            <div className="number-changed-container">
+                <label htmlFor='number' className='number-changed_label'>Choose your operator and operand</label>
+                <input type="text" onChange={this.onNumberInsert} name='operand' value={this.state.operand} placeholder={placeholder} className='number-changed_input' />
+                <div className="number-changed_button-container">
+                    <button onClick={this.handleOperationChoice} name='>>' className='number-changed_button'>{`>>`}</button>
+                    <button onClick={this.handleOperationChoice} name='>>>' className='number-changed_button'>{`>>>`}</button>
+                    <button onClick={this.handleOperationChoice} name='<<' className='number-changed_button'>{`<<`}</button>
+                    <button onClick={this.handleOperationChoice} name='&' className='number-changed_button'>{`&`}</button>
+                    <button onClick={this.handleOperationChoice} name='|' className='number-changed_button'>{`|`}</button>
+                    <button onClick={this.handleOperationChoice} name='^' className='number-changed_button'>{`^`}</button>
+                </div>
+                <div className="number-changed_number-container">
+                    {(operator !== "" && operand !== "" && number !== "") && numberAfterOperation}
+                </div>
             </div>
         )
     }
