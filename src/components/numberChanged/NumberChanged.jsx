@@ -2,6 +2,8 @@ import React, {
     Component
 } from 'react';
 
+import Button from '../button/button'
+
 import './NumberChanged.css'
 
 class NumberChanged extends Component {
@@ -24,6 +26,7 @@ class NumberChanged extends Component {
         this.setState({
             operator: name,
         })
+        console.log("www")
     }
 
     validateNumber = input => {
@@ -34,10 +37,6 @@ class NumberChanged extends Component {
     checkIfString = input => {
         const reg = /[^0-9]/;
         return reg.test(input);
-    }
-
-    performOperation = (operator, number) => {
-
     }
 
     render() {
@@ -70,7 +69,8 @@ class NumberChanged extends Component {
                     <button onClick={this.handleOperationChoice} name='<<' className='number-changed_button'>{`<<`}</button>
                     <button onClick={this.handleOperationChoice} name='&' className='number-changed_button'>{`&`}</button>
                     <button onClick={this.handleOperationChoice} name='|' className='number-changed_button'>{`|`}</button>
-                    <button onClick={this.handleOperationChoice} name='^' className='number-changed_button'>{`^`}</button>
+                    {/* <button onClick={this.handleOperationChoice} name='^' className='number-changed_button'>{`^`}</button> */}
+                    <Button onClick={this.handleOperationChoice} name='^' className='number-changed_button' />
                 </div>
                 <div className="number-changed_number-container">
                     {(operator !== "" && operand !== "" && number !== "") && numberAfterOperation}
