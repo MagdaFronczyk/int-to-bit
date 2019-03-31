@@ -5,6 +5,8 @@ import './App.css';
 import Number from '../number/Number';
 import NumberChanged from '../numberChanged/NumberChanged';
 import { CopyToClipboard } from 'react-copy-html-to-clipboard/lib/Component';
+import validateNumber from '../utils/validateNumber';
+import checkIfString from '../utils/checkIfString';
 
 class App extends Component {
 
@@ -13,21 +15,12 @@ class App extends Component {
     placeholder: 'enter your number',
   }
 
-  validateNumber = input => {
-    const reg = /^\d+$/;
-    return reg.test(input);
-  };
-
-  checkIfString = input => {
-    const reg = /[^0-9]/;
-    return reg.test(input);
-  }
 
   onInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
-      [name]: this.validateNumber(value) ? value : '',
-      placeholder: this.checkIfString(value) ? 'only numbers allowed' : "enter your number"
+      [name]: validateNumber(value) ? value : '',
+      placeholder: checkIfString(value) ? 'only numbers allowed' : "enter your number"
     })
   }
 

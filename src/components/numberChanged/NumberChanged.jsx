@@ -1,8 +1,9 @@
 import React, {
     Component
 } from 'react';
-
-import Button from '../button/button'
+import Button from '../button/button';
+import validateNumber from '../utils/validateNumber';
+import checkIfString from '../utils/checkIfString'
 
 import './NumberChanged.css'
 
@@ -16,8 +17,8 @@ class NumberChanged extends Component {
     onNumberInsert = (event) => {
         const { name, value } = event.target;
         this.setState({
-            [name]: this.validateNumber(value) ? value : '',
-            placeholder: this.checkIfString(value) ? 'letters not allowed' : 'enter your number',
+            [name]: validateNumber(value) ? value : '',
+            placeholder: checkIfString(value) ? 'letters not allowed' : 'enter your number',
         });
     }
 
@@ -28,20 +29,9 @@ class NumberChanged extends Component {
         })
     }
 
-    validateNumber = input => {
-        const reg = /^\d+$/;
-        return reg.test(input);
-    };
-
-    checkIfString = input => {
-        const reg = /[^0-9]/;
-        return reg.test(input);
-    }
-
     setNumberAfterOperation = () => {
         const { operator, operand } = this.state;
         const { number } = this.props;
-
         const OPERATIONS = {
             ">>": <p className="number-changed_number">{(parseInt(number) >> parseInt(operand)).toString(2)}</p>,
             ">>>": <p className="number-changed_number">{(parseInt(number) >>> parseInt(operand)).toString(2)}</p>,
