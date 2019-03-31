@@ -26,7 +26,6 @@ class NumberChanged extends Component {
         this.setState({
             operator: name,
         })
-        console.log("www")
     }
 
     validateNumber = input => {
@@ -64,12 +63,11 @@ class NumberChanged extends Component {
                 <label htmlFor='number' className='number-changed_label'>Choose your operator and operand</label>
                 <input type="text" onChange={this.onNumberInsert} name='operand' value={this.state.operand} placeholder={placeholder} className='number-changed_input' />
                 <div className="number-changed_button-container">
-                    <button onClick={this.handleOperationChoice} name='>>' className='number-changed_button'>{`>>`}</button>
-                    <button onClick={this.handleOperationChoice} name='>>>' className='number-changed_button'>{`>>>`}</button>
-                    <button onClick={this.handleOperationChoice} name='<<' className='number-changed_button'>{`<<`}</button>
-                    <button onClick={this.handleOperationChoice} name='&' className='number-changed_button'>{`&`}</button>
-                    <button onClick={this.handleOperationChoice} name='|' className='number-changed_button'>{`|`}</button>
-                    {/* <button onClick={this.handleOperationChoice} name='^' className='number-changed_button'>{`^`}</button> */}
+                    <Button onClick={this.handleOperationChoice} name='>>' className='number-changed_button' />
+                    <Button onClick={this.handleOperationChoice} name='>>>' className='number-changed_button' />
+                    <Button onClick={this.handleOperationChoice} name='<<' className='number-changed_button' />
+                    <Button onClick={this.handleOperationChoice} name='&' className='number-changed_button' />
+                    <Button onClick={this.handleOperationChoice} name='|' className='number-changed_button' />
                     <Button onClick={this.handleOperationChoice} name='^' className='number-changed_button' />
                 </div>
                 <div className="number-changed_number-container">

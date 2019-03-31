@@ -1,0 +1,17 @@
+.number-changed_button {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    font-family: inherit;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s ease-in-out;
+    margin: 20px auto;
+    display: block;
+    width: 80px;
+}
+
+.number-changed_button:hover {
+    background-color: grey;
+}
