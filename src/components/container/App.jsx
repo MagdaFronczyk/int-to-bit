@@ -15,7 +15,6 @@ class App extends Component {
     placeholder: 'enter your number',
   }
 
-
   onInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -23,7 +22,6 @@ class App extends Component {
       placeholder: checkIfString(value) ? 'only numbers allowed' : "enter your number"
     })
   }
-
 
   render() {
 

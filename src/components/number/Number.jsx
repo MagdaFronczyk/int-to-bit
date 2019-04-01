@@ -1,6 +1,7 @@
 import React, {
   Component
 } from 'react';
+import PropTypes from 'prop-types';
 
 import './Number.css'
 
@@ -12,4 +13,9 @@ class Number extends Component {
     )
   }
 }
+
+Number.propTypes = {
+  number: PropTypes.number
+}
+
 export default Number;

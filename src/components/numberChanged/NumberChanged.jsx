@@ -3,7 +3,8 @@ import React, {
 } from 'react';
 import Button from '../button/button';
 import validateNumber from '../utils/validateNumber';
-import checkIfString from '../utils/checkIfString'
+import checkIfString from '../utils/checkIfString';
+import PropTypes from 'prop-types';
 
 import './NumberChanged.css'
 
@@ -67,4 +68,9 @@ class NumberChanged extends Component {
         )
     }
 }
+
+NumberChanged.propTypes = {
+    number: PropTypes.number
+}
+
 export default NumberChanged;
